@@ -13,7 +13,7 @@ const databaseURL =
 
 mongoose.connect(databaseURL).then(function () {    
     const expenseRouter = require("../src/routes/expenseRouter");
-    app.use("/", expenseRouter);
+    app.use("/expenses", expenseRouter);
 });
 
 const PORT = process.env.PORT || 5000;
