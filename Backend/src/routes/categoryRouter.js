@@ -33,3 +33,5 @@ router.post("/delete", async function (req, res) {
   };
   res.json(response);
 });
+
+module.exports = router;
