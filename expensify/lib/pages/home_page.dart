@@ -16,7 +16,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    print(Icons.fastfood_rounded.codePoint);
     ExpenseNotifier expenseNotifier = Provider.of<ExpenseNotifier>(context);
     return Scaffold(
       appBar: AppBar(
@@ -36,6 +35,9 @@ class _HomePageState extends State<HomePage> {
                     return GestureDetector(
                       onTap: () {
                         print(index);
+                      },
+                      onLongPress: () {
+                        expenseNotifier.deleteExpense(currentExpense);
                       },
                       child: Card(
                         elevation: 3,

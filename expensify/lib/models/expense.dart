@@ -17,7 +17,7 @@ class Expense {
     return Expense(
         id: map['id'],
         userid: map['userid'],
-        amount: double.parse(map['amount'].toString()),
+        amount: double.tryParse(map['amount'].toString()),
         description: map['description'],
         category: map['category'],
         date: DateTime.tryParse(map['date']));

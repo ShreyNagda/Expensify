@@ -8,6 +8,7 @@ class ExpenseNotifier extends ChangeNotifier {
 
   ExpenseNotifier() {
     fetchExpenses();
+    notifyListeners();
   }
 
   void sortExpenses() {
@@ -17,6 +18,7 @@ class ExpenseNotifier extends ChangeNotifier {
   void addExpense(Expense expense) {
     expenses.add(expense);
     notifyListeners();
+    ApiService.addExpense(expense);
   }
 
   void updateExpense(Expense expense) {
@@ -25,6 +27,7 @@ class ExpenseNotifier extends ChangeNotifier {
 
     expenses[expenseIndex] = expense;
     notifyListeners();
+    ApiService.addExpense(expense);
   }
 
   void deleteExpense(Expense expense) {
@@ -33,6 +36,7 @@ class ExpenseNotifier extends ChangeNotifier {
 
     expenses.removeAt(expenseIndex);
     notifyListeners();
+    ApiService.deleteExpense(expense);
   }
 
   void fetchExpenses() async {

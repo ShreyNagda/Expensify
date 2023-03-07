@@ -1,9 +1,13 @@
 import 'package:expensify/pages/home_page.dart';
 import 'package:expensify/providers/expense_notifier.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+DateFormat format = DateFormat('dd MMM, yyyy hh:mm a', 'en_US');
+Future<void> main() async {
+
   runApp(const MyApp());
 }
 
@@ -26,6 +30,12 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         home: const HomePage(),
+        localizationsDelegates: const [
+          GlobalWidgetsLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate
+        ],
+        supportedLocales: const [Locale('en', 'IN')],
       ),
     );
   }
