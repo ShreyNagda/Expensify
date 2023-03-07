@@ -1,3 +1,4 @@
+import 'package:expensify/Services/api_services.dart';
 import 'package:expensify/models/expense.dart';
 import 'package:flutter/material.dart';
 
@@ -6,8 +7,7 @@ class ExpenseNotifier extends ChangeNotifier {
   bool isLoading = true;
 
   ExpenseNotifier() {
-    isLoading = false;
-    notifyListeners();
+    fetchExpenses();
   }
 
   void sortExpenses() {
@@ -32,6 +32,12 @@ class ExpenseNotifier extends ChangeNotifier {
         .indexOf(expenses.firstWhere((element) => element.id == expense.id));
 
     expenses.removeAt(expenseIndex);
+    notifyListeners();
+  }
+
+  void fetchExpenses() async {
+    expenses = await ApiService.fetchExpenses('shreynagda');
+    isLoading = false;
     notifyListeners();
   }
 

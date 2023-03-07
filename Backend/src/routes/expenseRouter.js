@@ -2,13 +2,6 @@ const express = require("express");
 const router = express.Router();
 
 const Expense = require('../models/expense') 
-
-router.get("/", function (req, res) {
-  res.json({
-    statusCode: res.statusCode,
-    message: "API works!",
-  });
-});
 router.post("/list", async function (req, res) {
     var expenses = await Expense.find({ userid: req.body.userid });
     res.json(expenses);

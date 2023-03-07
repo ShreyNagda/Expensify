@@ -11,9 +11,16 @@ app.use(bodyParser.json());
 const databaseURL =
   "mongodb+srv://shreynagda:shrey0308@cluster0.zxdkj5v.mongodb.net/?retryWrites=true&w=majority";
 
-mongoose.connect(databaseURL).then(function () {    
-    const expenseRouter = require("../src/routes/expenseRouter");
-    app.use("/expenses", expenseRouter);
+mongoose.connect(databaseURL).then(function () {
+  const expenseRouter = require("../src/routes/expenseRouter");
+
+  app.get("/", function (req, res) {
+    res.json({
+      statusCode: res.statusCode,
+      message: "API works!",
+    });
+  });
+  app.use("/expenses", expenseRouter);
 });
 
 const PORT = process.env.PORT || 5000;
