@@ -12,7 +12,8 @@ const databaseURL =
   "mongodb+srv://shreynagda:shrey0308@cluster0.zxdkj5v.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose.connect(databaseURL).then(function () {
-  const expenseRouter = require("../src/routes/expenseRouter");
+  const expenseRouter = require("./routes/expenseRouter");
+  const categoryRouter = require("./routes/categoryRouter");
 
   app.get("/", function (req, res) {
     res.json({
@@ -21,6 +22,7 @@ mongoose.connect(databaseURL).then(function () {
     });
   });
   app.use("/expenses", expenseRouter);
+  app.use("/categories", categoryRouter);
 });
 
 const PORT = process.env.PORT || 5000;
